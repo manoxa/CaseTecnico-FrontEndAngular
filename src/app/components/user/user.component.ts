@@ -13,11 +13,13 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
   
   ngOnInit() {
-  
+    this.getFindAll();
   }
 
   getFindAll(){
-
+    this.userService.findAllUser("OpenShiftDemos").subscribe((user: User) =>{
+      this.user = user;
+    });
   }
 
 }
