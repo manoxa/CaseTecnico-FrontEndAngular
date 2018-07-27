@@ -9,7 +9,11 @@ import { UserService } from './services/user.service';
 import { UserComponent } from './components/user/user.component';
 import { routes } from './app.routes';
 import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RepositoryComponent } from './components/repository/repository.component';
+import { RepositoryService } from './services/repository.service';
+import { DetailService } from './services/detail.service';
+import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,8 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     FooterComponent,
     HomeComponent,
     UserComponent,
+    RepositoryComponent,
+    DetailComponent
   ],
   imports: [
     HttpClientModule,
@@ -26,7 +32,9 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     routes
   ],
   providers: [
-    UserService
+    UserService,
+    RepositoryService,
+    DetailService
   ],
   bootstrap: [AppComponent]
 })

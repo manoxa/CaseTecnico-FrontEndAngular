@@ -7,8 +7,8 @@ export class UserService {
 
 constructor(private http: HttpClient){}
 
-findAllUser(username: string){
-    return this.http.get(`${GITHUB_PUBLIC_API}`+ username);
+getUser(username: string){
+    return this.http.get(`${GITHUB_PUBLIC_API}`+ '/users/' + username);
 }
 
 }
