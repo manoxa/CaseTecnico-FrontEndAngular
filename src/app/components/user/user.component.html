@@ -2,20 +2,85 @@
   <div class="col-md-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title"></h3>
+        <h3 class="box-title">
+          <b>Pesquisar Usuários do GitHub</b>
+        </h3>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse">
             <i class="fa fa-minus"></i>
           </button>
         </div>
       </div>
-
       <div class="box-body">
-      
-      </div>
+        <div>
+          <form #formSearchUser="ngForm" (ngSubmit)="onSubmit(formSearchUser)">
+            <div class="form-group">
+              <label for="user">Usuário GitHub</label>
+              <input type="text" style="width: auto" class="form-control" id="user" name="user" ngModel required>
+            </div>
+            <div class="form-group">
+              <button type="submit" (click)="mostrar()" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
 
-      <div class="box-footer">
+        <div class="row docs-premium-template" [ngStyle]="{'display':(ativo ? 'block' : 'none')}">
+          <div class="col-sm-12">
+            <div class="box box-solid">
+              <div class="box-body">
+                <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                  {{user.login}}
+                </h4>
+                <div class="media">
+                  <div class="media-left">
+                    <img [src]="user.avatar_url">
+                  </div>
+                  <div class="media-body">
+                    <div class="clearfix">
+                      <div class="pull-left">
+                        <label>
+                          <b>Bio:</b>
+                        </label>
+                        <span style="margin-left: 10px;">{{ user.bio}}</span>
+                        <br>
+                        <label>
+                          <b>Followers:</b>
+                        </label>
+                        <span style="margin-left: 10px;">{{ user.followers}}</span>
+                        <br>
+                        <label>
+                          <b>Following:</b>
+                        </label>
+                        <span style="margin-left: 10px;">{{ user.following}}</span>
+                        <br>
+
+                        <form #formRepos="ngForm" (ngSubmit)="getDetailsRepository(formRepos)">
+                          <div class="form-group">
+                            <label for="detail">
+                              <b>Repositories:</b>
+                            </label>
+                            <select style="width: auto" class="form-control" id="detail" name="detail" ngModel>
+                              <option value="" selected>-- Select --</option>
+                              <option *ngFor="let repository of repository" value="{{repository.full_name}}">{{repository.full_name}}
+                              </option>
+                            </select>
+                          </div>
+                          <br>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-success">Submit</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-footer">
+        </div>
       </div>
     </div>
   </div>
-</div>

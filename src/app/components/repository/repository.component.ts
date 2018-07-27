@@ -13,7 +13,6 @@ export class RepositoryComponent implements OnInit {
   constructor(private repositoryService: RepositoryService) { }
 
   ngOnInit() {
-    this.getRepository("algaworks");
   }
 
   getRepository(username: string){

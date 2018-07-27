@@ -6,8 +6,7 @@ import { RepositoryComponent } from "./components/repository/repository.componen
 import { DetailComponent } from "./components/detail/detail.component";
 
 export const ROUTES: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full' },
-    {path:'home', component: HomeComponent},
+    {path: '', redirectTo: '/', pathMatch: 'full' },
     {path:'user', component: UserComponent},
     {path:'repos', component: RepositoryComponent},
     {path:'details', component: DetailComponent}

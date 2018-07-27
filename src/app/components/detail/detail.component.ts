@@ -13,7 +13,6 @@ export class DetailComponent implements OnInit {
   constructor(private detailService: DetailService) { }
 
   ngOnInit() {
-    this.getDetailrepository("algaworks/1a-semana-primefaces-webinario");
   }
 
   getDetailrepository(fullname: string){
