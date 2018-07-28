@@ -3,7 +3,7 @@
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">
-          <b>Pesquisar Usuários do GitHub</b>
+          <b>Pesquisar</b>
         </h3>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -11,6 +11,7 @@
           </button>
         </div>
       </div>
+
       <div class="box-body">
         <div>
           <form #formSearchUser="ngForm" (ngSubmit)="onSubmit(formSearchUser)">
@@ -23,14 +24,30 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="row" [ngStyle]="{'display':(ativo ? 'block' : 'none')}">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">
+          <b>GitHub | {{user.login}}</b>
+        </h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="box-body">
         <div class="row docs-premium-template" [ngStyle]="{'display':(ativo ? 'block' : 'none')}">
           <div class="col-sm-12">
             <div class="box box-solid">
               <div class="box-body">
-                <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
-                  {{user.login}}
-                </h4>
                 <div class="media">
                   <div class="media-left">
                     <img [src]="user.avatar_url">
@@ -53,34 +70,71 @@
                         </label>
                         <span style="margin-left: 10px;">{{ user.following}}</span>
                         <br>
-
-                        <form #formRepos="ngForm" (ngSubmit)="getDetailsRepository(formRepos)">
-                          <div class="form-group">
-                            <label for="detail">
-                              <b>Repositories:</b>
-                            </label>
-                            <select style="width: auto" class="form-control" id="detail" name="detail" ngModel>
-                              <option value="" selected>-- Select --</option>
-                              <option *ngFor="let repository of repository" value="{{repository.full_name}}">{{repository.full_name}}
-                              </option>
-                            </select>
-                          </div>
-                          <br>
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-success">Submit</button>
-                          </div>
-                        </form>
                       </div>
                     </div>
+                    <form #formDetailRepository="ngForm" (ngSubmit)="getDetailRepository(formDetailRepository)">
+                        <div class="form-group">
+                          <label for="detail">
+                            <b>Select one repository for more details:</b>
+                          </label>
+                          <select style="width: auto" class="form-control" id="detail" name="detail" [(ngModel)]="detail">
+                            <option *ngFor="let repository of repository" value="{{repository.full_name}}">{{repository.full_name}}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-success">Detail Repository</button>
+                        </div>
+                      </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="box-footer">
-        </div>
       </div>
     </div>
   </div>
+</div>
+
+
+
+<div class="row" [ngStyle]="{'display':(ativo ? 'block' : 'none')}">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">
+          <b><span>Repository</span></b>
+        </h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="box-body">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Stars</th>
+                    <th>URL</th>                  
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let repository of repository">
+                        <td>{{repository.name}}</td>
+                        <td>{{repository.description}}</td>
+                        <td>{{repository.stargazers_count}}</td>
+                        <td>
+                          <a [href]="repository.html_url">{{repository.html_url}}</a>
+                        </td>
+                      </tr>		                  
+                </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>TestAngular</title>
@@ -11,12 +12,13 @@
   <link rel="stylesheet" href="assets/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
   <link rel="stylesheet" href="assets/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
 </head>
+
 <body class="hold-transmition skin-blue sidebar-mini">
   <app-root>
-      <div class="wrapper">Loading...</div>
+    <div class="wrapper">Loading...</div>
   </app-root>
 </body>
 
@@ -26,5 +28,22 @@
 <script src="assets/js/adminlte.min.js"></script>
 <script src="assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <script src="assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#id').DataTable();
+  });
+
+  $('#id').DataTable({
+    paging: false
+  });
+
+  $('#id').DataTable({
+    destroy: true,
+    searching: false
+  });
+
+</script>
 
 </html>

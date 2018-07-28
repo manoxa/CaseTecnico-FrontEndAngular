@@ -1,4 +1,3 @@
-import { HomeComponent } from "./components/home/home.component";
 import { UserComponent } from "./components/user/user.component";
 import { Routes, RouterModule } from "@angular/router";
 import { ModuleWithProviders } from "@angular/core";
@@ -6,7 +5,7 @@ import { RepositoryComponent } from "./components/repository/repository.componen
 import { DetailComponent } from "./components/detail/detail.component";
 
 export const ROUTES: Routes = [
-    {path: '', redirectTo: '/', pathMatch: 'full' },
+    {path: '', redirectTo: '/user', pathMatch: 'full' },
     {path:'user', component: UserComponent},
     {path:'repos', component: RepositoryComponent},
     {path:'details', component: DetailComponent}

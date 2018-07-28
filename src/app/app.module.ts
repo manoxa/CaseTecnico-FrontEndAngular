@@ -16,6 +16,7 @@ import { RepositoryService } from './services/repository.service';
 import { DetailService } from './services/detail.service';
 import { DetailComponent } from './components/detail/detail.component';
 import MyErrorHandler from './handler/error.handler';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import MyErrorHandler from './handler/error.handler';
     HttpClientModule,
     BrowserModule,
     FormsModule,
+    DataTablesModule,
     routes
   ],
   providers: [
