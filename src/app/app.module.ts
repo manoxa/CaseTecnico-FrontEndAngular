@@ -7,11 +7,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
-import { UserComponent } from './components/user/user.component';
 import { routes } from './app.routes';
-import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RepositoryComponent } from './components/repository/repository.component';
 import { RepositoryService } from './services/repository.service';
 import { DetailService } from './services/detail.service';
 import { DetailComponent } from './components/detail/detail.component';
@@ -24,9 +21,6 @@ import { DataTablesModule } from 'angular-datatables';
     HeaderComponent,
     MenuComponent,
     FooterComponent,
-    HomeComponent,
-    UserComponent,
-    RepositoryComponent,
     DetailComponent
   ],
   imports: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailService } from '../../services/detail.service';
 import { DetailRepository } from '../../model/detail.model';
+import { NgForm } from '../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-detail',
@@ -13,6 +14,7 @@ export class DetailComponent implements OnInit {
   constructor(private detailService: DetailService) { }
 
   ngOnInit() {
+    
   }
 
   getDetailrepository(fullname: string){
@@ -20,6 +22,5 @@ export class DetailComponent implements OnInit {
         this.detailRepository = detailRepository;
     });
   }
-
 
 }

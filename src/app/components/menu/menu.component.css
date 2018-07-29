@@ -1,0 +1,17 @@
+#imgcircleopen{
+    max-width:30px;
+    max-height:30px;
+    width: auto;
+    height: auto;
+}
+
+#imgDados{
+    max-width:254px;
+    max-height:204px;
+    width: auto;
+    height: auto;
+}
+
+.main-sidebar{
+    padding-top: 10px;
+}
