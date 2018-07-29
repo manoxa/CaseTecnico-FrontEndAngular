@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../model/user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
@@ -7,15 +7,20 @@ import { Repository } from '../../model/repository.model';
 import { Subject } from 'rxjs';
 import { DetailService } from '../../services/detail.service';
 import { DetailRepository } from '../../model/detail.model';
+import { DataTableDirective } from '../../../../node_modules/angular-datatables';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements AfterViewInit, OnDestroy, OnInit {
+
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
 
   dtOptions: DataTables.Settings = {};
+
   dtTrigger: Subject<any> = new Subject();
 
   user: User;
@@ -44,6 +49,11 @@ export class MenuComponent implements OnInit {
     this.username = formSearchUser.form.controls.searchuser.value;
     this.searchUserGitHub(this.username);
     this.searchUserRepository(this.username);
+    if(this.username != ''){
+      this.mostrar();
+    }else{
+      this.ativo = false;
+    }
   }
 
   searchUserGitHub(user: string) {
@@ -55,7 +65,7 @@ export class MenuComponent implements OnInit {
   searchUserRepository(username: string) {
     this.repositoryService.getRepository(username).subscribe((repository: Repository) => {
       this.repository = repository;
-      this.dtTrigger.next();
+      this.rerender();      
     });
   }
 
@@ -66,8 +76,19 @@ export class MenuComponent implements OnInit {
     });
   }
   
+  ngAfterViewInit(): void {
+    this.dtTrigger.next();
+  }
+
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.destroy();
+      this.dtTrigger.next();
+    });
   }
 
 }

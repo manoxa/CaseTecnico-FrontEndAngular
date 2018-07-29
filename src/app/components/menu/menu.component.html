@@ -14,7 +14,7 @@
         <div class="input-group">
           <input type="text" id="searchuser" name="searchuser" class="form-control" placeholder="Search..." ngModel>
           <span class="input-group-btn">
-            <button type="submit" (click)="mostrar()" class="btn btn-flat">
+            <button type="submit" class="btn btn-flat">
               <i class="fa fa-search"></i>
             </button>
           </span>
@@ -25,7 +25,7 @@
         <li class="header">Menu de Opções</li>
 
         <li class="treeview">
-          <a href="#" class="sidebar-toggle" (click)="redimencionarImg()" data-toggle="push-menu" role="button">
+          <a href="#" class="sidebar-toggle"  data-toggle="push-menu" role="button">
             <i class="fa fa-search"></i>
             <span>Search</span>
             <span class="pull-right-container">
@@ -143,7 +143,7 @@
                 </div>
               </div>     
               <div class="box-body">
-                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" style="width:100%">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
                   <thead>
                     <tr>
                       <th>Name</th>
