@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { User } from '../../model/user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
@@ -16,27 +16,29 @@ import { DataTableDirective } from '../../../../node_modules/angular-datatables'
 })
 export class MenuComponent implements AfterViewInit, OnDestroy, OnInit {
 
+
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
-
   dtOptions: DataTables.Settings = {};
-
   dtTrigger: Subject<any> = new Subject();
+
 
   user: User;
   repository: Repository;
   detailRepository: DetailRepository;
   username: string;
   ativo: boolean = false;
-  fullname: string;  
+  fullname: string;
+
 
   constructor(private userService: UserService,
     private repositoryService: RepositoryService,
     private detailService: DetailService) { }
 
+
   ngOnInit() {
     this.dtOptions = {
-      pagingType: 'full_numbers',
+      pagingType: 'simple_numbers',
       pageLength: 10
     };
   }
